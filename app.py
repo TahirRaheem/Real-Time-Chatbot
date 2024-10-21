@@ -29,16 +29,37 @@ def ask_question(context, question):
     return result['answer']
 
 # Streamlit app
-st.title("Question Answering Chatbot")
+st.title("SkillBridge Question Answering Chatbot")
+
+# Predefined questions for SkillBridge
+st.subheader("Try asking one of these questions:")
+predefined_questions = [
+    "What courses does SkillBridge offer for content writing?",
+    "How can I improve my graphic designing skills through SkillBridge?",
+    "Are there any beginner-friendly courses available in SkillBridge?",
+    "What is the duration of the content writing course?",
+    "Does SkillBridge provide certifications upon course completion?",
+    "What are the prerequisites for enrolling in a graphic design course?",
+    "How can I access course materials after enrolling in SkillBridge?",
+    "Are there any community forums for SkillBridge students?",
+    "What payment options are available for SkillBridge courses?",
+    "Can I get personalized feedback on my projects from instructors at SkillBridge?",
+]
+
+for question in predefined_questions:
+    if st.button(question):
+        st.session_state.user_question = question  # Store the question in the session state
+        st.experimental_rerun()  # Rerun the app to process the question
 
 # User input for question
-user_question = st.text_input("Ask your question:")
+user_question = st.text_input("Or ask your own question:", value=st.session_state.get('user_question', ''))
 
 # Context for question answering (you can update this based on your use case)
 context = """
-Fast language models like GPT and LLAMA are crucial for modern NLP tasks. They allow real-time processing and 
-generate human-like responses, which is vital for applications such as chatbots, virtual assistants, and 
-content generation.
+SkillBridge offers a variety of courses in freelance skills, including content writing and graphic designing. 
+These courses are designed for beginners and experienced individuals alike, with options for certifications 
+upon completion. Students have access to course materials and can participate in community forums to enhance 
+their learning experience.
 """
 
 if user_question:
