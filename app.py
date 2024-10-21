@@ -4,7 +4,7 @@ from transformers import pipeline
 
 # Initialize Groq client with the API key directly (replace with your actual API key)
 client = Groq(
-    api_key="your_groq_api_key_here",  # Replace this with your Groq API key
+    api_key="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",  # Replace this with your Groq API key
 )
 
 # Initialize the deepset/roberta-base-squad2 pipeline for question answering
